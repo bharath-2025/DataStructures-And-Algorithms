@@ -96,7 +96,7 @@ int main(){
     n2.next = n3;
     n3->next = n4;*/
 
-    Node *head = takeInput();
+    Node *head = takeInput_Better();
 
     //cout<<head->data<<endl;
 
