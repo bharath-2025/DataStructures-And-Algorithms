@@ -14,6 +14,50 @@ class Node{
 
 };
 
+Node* deleteNode(Node *head,int pos){
+    if(head == nullptr){
+        return head;
+    }
+
+    if(pos == 0){
+        head = head->next;
+        return head;
+    }
+
+    int count=0;
+    Node *temp = head;
+    while(count < pos-1 && temp->next != nullptr){
+        temp = temp->next;
+        count++;
+    }
+
+    if(count == pos-1){
+        temp->next = (temp->next)->next;
+    }
+    return head;
+}
+
+Node* insertNode(Node *head,int pos,int data){
+    Node *newNode = new Node(data);
+    if(pos == 0){
+        newNode -> next = head;
+        head = newNode;
+        return head;
+    }
+    int count=0;
+    Node *temp = head;
+    while(count < pos-1 && temp->next != nullptr){
+        temp = temp->next;
+        count++;
+    }
+    if(count == pos-1){
+        newNode -> next = temp -> next;
+        temp -> next = newNode;
+    }
+    
+    return head;
+}
+
 
 //Th=ime Complexity is O(N^2)
 Node* takeInput(){
@@ -69,6 +113,7 @@ void print(Node * head){
         cout<<temp->data<<" ";
         temp = temp->next;
     }
+    cout<<endl;
 }
 
 
@@ -99,6 +144,14 @@ int main(){
     Node *head = takeInput_Better();
 
     //cout<<head->data<<endl;
+
+    print(head);
+
+    head = insertNode(head,2,100);
+
+    print(head);
+
+    head = deleteNode(head,8);
 
     print(head);
     
