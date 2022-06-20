@@ -14,6 +14,8 @@ class Node{
 
 };
 
+
+//Th=ime Complexity is O(N^2)
 Node* takeInput(){
     //Let use -1 as terminator to take the input.
     int data;
@@ -30,6 +32,30 @@ Node* takeInput(){
                 temp = temp->next;
             }
             temp -> next = newNode; 
+        }
+
+        cin>>data;
+    }
+    return head;
+}
+
+
+//Improving the Effeciency of takeInput function to O(n) Time Complexity bu using a tail Pointer
+Node* takeInput_Better(){                       
+    //Let use -1 as terminator to take the input.
+    int data;
+    cin>>data;
+    Node *head = nullptr;
+    Node *tail = nullptr;
+    while(data!=-1){
+        Node *newNode = new Node(data);
+        if(head==nullptr){
+            head = newNode;
+            tail = newNode;
+        }
+        else{
+            tail -> next = newNode;
+            tail = tail -> next;  
         }
 
         cin>>data;
@@ -72,7 +98,7 @@ int main(){
 
     Node *head = takeInput();
 
-    cout<<head->data<<endl;
+    //cout<<head->data<<endl;
 
     print(head);
     
